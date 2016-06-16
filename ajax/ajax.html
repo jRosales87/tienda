@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ajax</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>AJAX</div>
+        <hr>
+        <div id="resultado"></div>
+        <hr>
+         <script src="../theme/bs1/js/jquery-1.11.1.js"></script>
+        
+        <div>
+            <button name="btAjax" id="btAjax">ajax obtener nombre</button>
+            <a href="#" id="aAjax">ajax obener apellidos</a>
+            <a href="#" id="a2Ajax">ajax2 obener apellidos</a>
+             <a href="#" id="a3Ajax">ajax3 obener jquery</a>
+            
+        </div>
+        <script>
+           (function(){        
+             var btAjax = document.getElementById("btAjax");
+             var aAjax = document.getElementById("aAjax");
+             var a2Ajax = document.getElementById("a2Ajax");
+             var a3Ajax = document.getElementById("a3Ajax");
+             var a3AjaxBis = $("a3Ajax");
+             var resultado = document.getElementById("resultado");
+             //1
+             btAjax.addEventListener("click", function(){
+                 //resultado.innerHTML+= "alfrdo</br>";
+                 var ajax = new XMLHttpRequest();
+                 var nombre = "José Luis";
+                 ajax.open("GET","nombre.php?param=" + encodeURIComponent (nombre));
+                 //ajax.responseType = "json";
+                 ajax.onreadystatechange = function(){
+                     //ajax.readyState;
+                     //ajax.status;
+                     if(ajax.readyState===4){//respuesta completa
+                         if(ajax.status===200){//200-ok
+                             console.log("todo OK");
+                             console.log(ajax.response);
+                             console.log(ajax.responseText);
+                             console.log(JSON.parse(ajax.responseText));
+                             var r  = JSON.parse(ajax.responseText);
+                             //ajax.responseText;
+                             //ajax.responseXML;
+                             //ajax.respose;
+                             resultado.innerHTML += r.respuesta + "";
+                         }else{
+                             console.log(" ERROR");
+                         }
+                     }
+                     
+                 }
+                 //ajax.onload = function(){}                 
+                 ajax.send();
+             });   
+             //2
+             var funcionNoAnonima = function(event){
+                 
+                 event.preventDefault();
+                //resultado.innerHTML+= "perex </br>" ;
+                 var ajax = new XMLHttpRequest();
+                 ajax.open("POST", "apellidos.php");
+                 ajax.responseType= "json";
+                 ajax.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                 ajax.onreadystatechange = function(){
+                      if(ajax.readyState===4){//respuesta completa
+                         if(ajax.status===200){//200-ok
+                             console.log("todo OK");
+                             //var r  = ajax.response;
+                             //resultado.innerHTML += r.respuesta +"</br>" ;
+                         }else{
+                             console.log(" ERROR");
+                         }
+                         console.log("siempre");
+                     }
+                 };
+                  ajax.send();
+             };
+              //ajax.onload = function(){}                 
+                
+            
+             aAjax.addEventListener("click", funcionNoAnonima);
+             
+             a2Ajax.addEventListener("click", function funcionNoAnonimaTradicional(){
+                 //event.preventDefault();
+                 resultado.innerHTML+= "Rubalcava " ;
+             }); 
+              a3Ajax.addEventListener("click", function (){
+                        $.ajax({
+                              url: "nombre.php",
+                              data: {
+                                  param: "José Antonio",//pagina.php?id=123&id2=111        
+                              },
+                              type: "GET",
+                              dataType: "json"
+                        }).done(function( json, status, xhr ) {// equivalente a ok
+                            alert("ok");
+                            console.log("json" + json)
+                        }).fail(function( xhr, status, errorThrown ) {
+                            alert("error");
+                            console.log("xhr" + xhr);
+                            console.log("status" + status);
+                            console.log("errorThrown" + errorThrown);
+                         
+                       }).always(function( xhr, status ) {//siempre
+                           alert("siempre");
+                           console.log("xhr" + xhr);
+                            console.log("status" + status);                       
+                      });
+                  });
+              })();
+        </script>
+    </body>
+</html>

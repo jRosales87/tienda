@@ -1,0 +1,7 @@
+_index.html
+        {base}
+	{login}
+	{contenido}
+_login.html
+_logout.html
+	{usuario}

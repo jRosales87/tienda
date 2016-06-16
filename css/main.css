@@ -1,0 +1,117 @@
+
+
+html {
+    background-color: #e6e9e9;
+    background-image: -webkit-linear-gradient(270deg,rgb(230,233,233) 0%,rgb(216,221,221) 100%);
+    background-image: linear-gradient(270deg,rgb(230,233,233) 0%,rgb(216,221,221) 100%);
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    margin: 0 auto;
+    padding: 2em 2em 4em;
+    max-width: 1100px;    
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5em;
+    color: #545454;
+    background-color: #000000;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #eeeeee;
+    font-weight: 600;
+    line-height: 1.3em;
+}
+
+h2 {
+    margin-top: 1.3em;
+}
+
+a {
+    color: #0083e8; 
+    
+}
+a:link {   
+ text-decoration:none;   
+}
+a:link{
+    text-decoration: none;
+    transition-property: background-color, color;    
+    color: #989898;
+    width: 100%;
+}
+a:link:hover{
+  
+    transition-property: background-color, color;
+     transition-duration: 1s;
+    transition-delay: 0s;
+    transition-timing-function: ease;
+    background-color: whitesmoke;
+    font-size: 20px;
+    color:red;
+}
+
+
+b, strong {
+    font-weight: 600;
+}
+
+#indexibervino{
+    position: relative;
+    width: 80%;
+}
+img{
+    position: relative;
+    width: 100%;
+}
+#indexinicio{
+    position: relative;
+    margin-left: 35%;
+    margin-top: -36%;
+    width: 90%;
+}
+#login{
+    position: relative;  
+    margin-left: 35%;
+    margin-top: -36%;
+    width: 30%;
+}
+#seleccionUsuarios{
+    position: relative;
+    margin-left: 35%;
+    margin-top: -36%;
+    width: 90%;
+}
+table{
+    position: relative;
+    margin-left: 5%;
+    margin-top: -1%;
+}
+
+tr{
+    text-align: center;
+    color: whitesmoke;
+}
+form{
+    color: whitesmoke;
+}
+
+@-webkit-keyframes colorize {
+    0% {
+        -webkit-filter: grayscale(100%);
+    }
+    100% {
+        -webkit-filter: grayscale(0%);
+    }
+}
+
+@keyframes colorize {
+    0% {
+        filter: grayscale(100%);
+    }
+    100% {
+        filter: grayscale(0%);
+    }
+}
